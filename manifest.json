@@ -5,6 +5,7 @@
    "description": "Inspiration page for your mind.",
    "permissions": [
       "contextMenus",
+      "activeTab",
       "tabs"
    ],
    "background": {
