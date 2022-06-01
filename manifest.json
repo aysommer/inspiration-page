@@ -1,6 +1,13 @@
 {
-   "manifest_version": 2,
+   "manifest_version": 3,
    "name": "inspiration-page",
    "version": "0.1",
-   "description": "Inspiration page for your mind."
+   "description": "Inspiration page for your mind.",
+   "permissions": [
+      "contextMenus",
+      "tabs"
+   ],
+   "background": {
+      "service_worker": "main.js"
+   }
 }
