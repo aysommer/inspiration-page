@@ -3,12 +3,7 @@
    "name": "inspiration-page",
    "version": "0.1",
    "description": "Inspiration page for your mind.",
-   "permissions": [
-      "contextMenus",
-      "activeTab",
-      "tabs"
-   ],
-   "background": {
-      "service_worker": "main.js"
+   "chrome_url_overrides": {
+      "newtab": "index.html"
    }
 }
