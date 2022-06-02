@@ -9,12 +9,19 @@
    </head>
    <body>
       <main id="root">
-         <section class="insp__birthday-form">
+         <section
+            class="insp__birthday-form"
+            id="birthday-form">
             <h1>Enter your birthday</h1>
-            <form id="birthday-form" onsubmit="onSubmitBirthday(event)">
+            <form onsubmit="onSubmitBirthday(event)">
                <input type="date" id="birthday-input">
                <button type="submit">Submit</button>
             </form>
+         </section>
+         <section
+            class="insp__birthday-timer"
+            id="birthday-timer">
+            <h1>Time here...</h1>
          </section>
       </main>
       <script src="./app.js"></script>

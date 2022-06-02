@@ -1,5 +1,6 @@
-const root = document.querySelector('#root');
+const birthdayInputForm = document.querySelector('#birthday-form');
 const birthdayInput = document.querySelector('#birthday-input');
+const birthdayTime = document.querySelector('#birthday-timer');
 
 const user = {
    get birthday() {
@@ -34,7 +35,27 @@ function onSubmitBirthday(event) {
 
    if (birthdayInput.valueAsDate) {
       user.birthday = birthdayInput.valueAsDate;
+
+      setActiveControl();
    }
 }
 
-function init() { }
+/**
+ * Sets active control for show.
+ */
+function setActiveControl() {
+   const controlToHide = (user.birthday) ? birthdayInputForm : birthdayTime;
+   const controlToShow = (user.birthday) ? birthdayTime : birthdayInputForm;
+
+   controlToHide.style.display = 'none';
+   controlToShow.style.display = 'block';
+}
+
+/**
+ * Entry point.
+ */
+function init() {
+   setActiveControl();
+}
+
+init();

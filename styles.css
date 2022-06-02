@@ -1,3 +1,18 @@
+* {
+   margin: 0;
+}
+
+html, body, #root {
+   height: 100%;
+   width: 100%;
+}
+
+#root {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
 :root {
    --dark-color: #111111;
    --light-color: #eeeeee;
