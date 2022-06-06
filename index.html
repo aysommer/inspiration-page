@@ -13,20 +13,36 @@
             class="insp__birthday-form"
             id="birthday-form">
             <h1>Enter your birthday</h1>
-            <form onsubmit="onSubmitBirthday(event)">
-               <input type="date" id="birthday-input">
-               <button type="submit">Submit</button>
-            </form>
+            <section class="insp__input-container">
+               <input
+                  class="insp__birthday-input"
+                  type="date"
+                  id="birthday-input">
+               <button type="button" onclick="onSubmitBirthday()">
+                  Submit
+               </button>
+            </section>
          </section>
          <section id="birthday-timer-container">
             <section class="insp__birthday-timer">
                <h1>Your age</h1>
                <div class="insp__age-line">
                   <h2 id="birthday-timer" class="insp__age"></h2>
-                  <h2 id="birthday-timer-seconds"></h2>
+                  <h2 id="birthday-timer-seconds" class="insp__age-seconds"></h2>
                </div>
             </section>
          </section>
+         <aside>
+            <button
+               class="insp__menu-button"
+               onclick="toggleNavbar(true)">&#9776;</button>
+
+            <nav id="sidebar" class="insp__side-nav">
+               <button
+                  class="insp__menu-button"
+                  onclick="toggleNavbar(false)">&times;</button>
+            </nav>
+         </aside>
       </main>
       <script src="./app.js"></script>
    </body>

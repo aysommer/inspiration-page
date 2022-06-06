@@ -1,5 +1,7 @@
 * {
    margin: 0;
+   padding: 0;
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 html,
@@ -7,7 +9,6 @@ body,
 #root {
    height: 100%;
    width: 100%;
-   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 #root {
@@ -17,22 +18,73 @@ body,
 }
 
 :root {
-   --dark-color: #111111;
-   --light-color: #eeeeee;
+   --dark-color_a: #111111;
+   --dark-color_b: #222222;
+   --light-color_a: #eeeeee;
+   --light-color_b: #dddddd;
+   --padding-s: 8px;
 }
 
 @media (prefers-color-scheme: light) {
    body {
-      background-color: var(--light-color);
-      color: var(--dark-color);
+      background-color: var(--light-color_a);
+      color: var(--dark-color_a);
+   }
+
+   .insp__menu-button {
+      color: var(--dark-color_a);
+   }
+
+   .insp__menu-button:hover {
+      background-color: var(--light-color_b);
+   }
+
+   .insp__side-nav {
+      background-color: var(--light-color_b);
    }
 }
 
 @media (prefers-color-scheme: dark) {
    body {
-      background-color: var(--dark-color);
-      color: var(--light-color);
+      background-color: var(--dark-color_a);
+      color: var(--light-color_a);
    }
+
+   .insp__menu-button {
+      color: var(--light-color_a);
+   }
+
+   .insp__menu-button:hover {
+      background-color: var(--dark-color_b);
+   }
+
+   .insp__side-nav {
+      background-color: var(--dark-color_b);
+   }
+}
+
+.insp__menu-button {
+   position: absolute;
+   top: var(--padding-s);
+   right: var(--padding-s);
+   width: 48px;
+   height: 48px;
+   font-size: 32px;
+   background-color: transparent;
+   outline: 0;
+   border: 0;
+   cursor: pointer;
+   border-radius: 50%;
+}
+
+.insp__input-container {
+   display: flex;
+   margin-top: var(--padding-s);
+}
+
+.insp__birthday-input {
+   flex: 1;
+   margin-right: var(--padding-s);
 }
 
 .insp__birthday-timer {
@@ -42,6 +94,10 @@ body,
    align-items: center;
 }
 
+.insp__age-seconds {
+   width: 160px;
+}
+
 .insp__age {
    font-size: 64px;
 }
@@ -49,4 +105,20 @@ body,
 .insp__age-line {
    display: flex;
    align-items: baseline;
+   justify-content: center;
+}
+
+.insp__side-nav {
+   height: 100%;
+   width: 0;
+   position: fixed;
+   z-index: 1;
+   top: 0;
+   right: 0;
+   overflow-x: hidden;
+   transition: .5s;
+}
+
+#birthday-timer-container {
+   transition: margin-right .5s;
 }
