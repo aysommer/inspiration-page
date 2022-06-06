@@ -78,7 +78,9 @@ function setActiveControl() {
 function calculateAge() {
    difference = Date.now() - birthday;
    value = (new Date(difference) - UNIX_TIME_FULL_YEAR) / AGE_DELIMITER;
-   birthdayTimer.innerText = Math.trunc(value);
+   if (parseInt(birthdayTimer.innerText, 10) !== Math.trunc(value)) {
+      birthdayTimer.innerText = Math.trunc(value);
+   }
    birthdayTimerSeconds.innerText = (value % 1).toFixed(MAX_VALUE_LENGTH).substring(1);
 }
 
