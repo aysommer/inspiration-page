@@ -13,19 +13,19 @@
             class="insp__birthday-form"
             id="birthday-form">
             <h1>Enter your birthday</h1>
-            <section class="insp__input-container">
+            <form
+               class="insp__input-container"
+               id="input-container">
                <input
                   class="insp__birthday-input"
                   type="date"
                   id="birthday-input">
-               <button type="button" onclick="onSubmitBirthday()">
-                  Submit
-               </button>
-            </section>
+               <button type="submit">Submit</button>
+            </form>
          </section>
          <section id="birthday-timer-container">
             <section class="insp__birthday-timer">
-               <h1>Your age</h1>
+               <h1 class="insp__age-title">Your age</h1>
                <div class="insp__age-line">
                   <h2 id="birthday-timer" class="insp__age"></h2>
                   <h2 id="birthday-timer-seconds" class="insp__age-seconds"></h2>
@@ -35,12 +35,12 @@
          <aside>
             <button
                class="insp__menu-button"
-               onclick="toggleNavbar(true)">&#9776;</button>
+               id="open-menu-button">&#9776;</button>
 
             <nav id="sidebar" class="insp__side-nav">
                <button
                   class="insp__menu-button"
-                  onclick="toggleNavbar(false)">&times;</button>
+                  id="close-menu-button">&times;</button>
             </nav>
          </aside>
       </main>

@@ -94,12 +94,12 @@ body,
    align-items: center;
 }
 
-.insp__age-seconds {
-   width: 160px;
+.insp__age-title, .insp__age-seconds {
+   font-size: 48px;
 }
 
 .insp__age {
-   font-size: 64px;
+   font-size: 96px;
 }
 
 .insp__age-line {

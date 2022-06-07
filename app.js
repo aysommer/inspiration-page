@@ -3,7 +3,10 @@ const birthdayInput = document.querySelector('#birthday-input');
 const birthdayTimeContainer = document.querySelector('#birthday-timer-container');
 const birthdayTimer = document.querySelector('#birthday-timer');
 const birthdayTimerSeconds = document.querySelector('#birthday-timer-seconds');
-const sidebar = document.querySelector("#sidebar");
+const sidebar = document.querySelector('#sidebar');
+const form = document.querySelector('#input-container');
+const openMenuButton = document.querySelector('#open-menu-button');
+const closeMenuButton = document.querySelector('#close-menu-button');
 
 const UNIX_TIME_FULL_YEAR = new Date(0).getFullYear();
 const AGE_DELIMITER = 1000 * 60 * 60 * 24 * 365.25;
@@ -44,8 +47,11 @@ function isValidDate(value) {
 
 /**
  * Submits user event for birthday input.
+ * @param {SubmitEvent} event Form event.
  */
-function onSubmitBirthday() {
+function onSubmitBirthday(event) {
+   event.preventDefault();
+
    if (birthdayInput.valueAsDate) {
       user.birthday = birthdayInput.valueAsDate;
 
@@ -70,6 +76,15 @@ function setActiveControl() {
       calculateAge();
       setInterval(calculateAge, UPDATE_TICK);
    }
+}
+
+/**
+ * Sets callbacks on controls.
+ */
+function setCallbacks() {
+   form.onsubmit = onSubmitBirthday;
+   openMenuButton.onclick = () => toggleNavbar(true);
+   closeMenuButton.onclick = () => toggleNavbar(false);
 }
 
 /**
@@ -98,6 +113,7 @@ function calculateAge() {
  * Entry point.
  */
 function init() {
+   setCallbacks();
    setActiveControl();
 }
 
