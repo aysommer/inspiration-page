@@ -7,6 +7,7 @@ const sidebar = document.querySelector('#sidebar');
 const form = document.querySelector('#input-container');
 const openMenuButton = document.querySelector('#open-menu-button');
 const closeMenuButton = document.querySelector('#close-menu-button');
+const updateTickRange = document.querySelector('#update-tick-range');
 
 const UNIX_TIME_FULL_YEAR = new Date(0).getFullYear();
 const AGE_DELIMITER = 1000 * 60 * 60 * 24 * 365.25;
@@ -17,6 +18,7 @@ const NAV_WIDTH = 400;
 let birthday;
 let difference;
 let value;
+let updateTick = UPDATE_TICK;
 
 const user = {
    get birthday() {
@@ -60,6 +62,14 @@ function onSubmitBirthday(event) {
 }
 
 /**
+ * Sets timer update speed.
+ * @param {InputEvent} event Range event.
+ */
+function onUpdateSpeed({ target }) {
+   updateTick = target.value;
+}
+
+/**
  * Sets active control for show.
  */
 function setActiveControl() {
@@ -74,7 +84,7 @@ function setActiveControl() {
 
       // Need to render start.
       calculateAge();
-      setInterval(calculateAge, UPDATE_TICK);
+      setInterval(calculateAge, updateTick);
    }
 }
 
@@ -82,6 +92,7 @@ function setActiveControl() {
  * Sets callbacks on controls.
  */
 function setCallbacks() {
+   updateTickRange.onchange = onUpdateSpeed;
    form.onsubmit = onSubmitBirthday;
    openMenuButton.onclick = () => toggleNavbar(true);
    closeMenuButton.onclick = () => toggleNavbar(false);

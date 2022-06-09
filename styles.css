@@ -130,6 +130,17 @@ body,
    transition: .5s;
 }
 
+.insp__settings {
+   padding: var(--padding-s);
+}
+
+.insp__settings-block {
+   white-space: nowrap;
+   display: flex;
+   align-items: center;
+   width: 100%;
+}
+
 #birthday-timer-container {
    transition: margin-right .5s;
 }
