@@ -4,8 +4,18 @@
    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-button {
+button,
+input[type="range"] {
    cursor: pointer;
+}
+
+a {
+   color: inherit;
+   text-decoration: inherit;
+}
+
+a:hover {
+   text-decoration: underline;
 }
 
 html,
@@ -106,7 +116,8 @@ body,
    align-items: center;
 }
 
-.insp__age-title, .insp__age-seconds {
+.insp__age-title,
+.insp__age-seconds {
    font-size: 48px;
 }
 
@@ -121,6 +132,9 @@ body,
 }
 
 .insp__side-nav {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
    height: 100%;
    width: 0;
    position: fixed;
@@ -150,6 +164,12 @@ body,
 
 .insp__settings-option-name {
    margin-right: var(--padding-s);
+}
+
+.insp__about {
+   text-align: right;
+   white-space: nowrap;
+   padding: var(--padding-m);
 }
 
 #birthday-timer-container {

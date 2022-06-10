@@ -12,14 +12,12 @@ const updateTickRange = document.querySelector('#update-tick-range');
 const UNIX_TIME_FULL_YEAR = new Date(0).getFullYear();
 const AGE_DELIMITER = 1000 * 60 * 60 * 24 * 365.25;
 const MAX_VALUE_LENGTH = 10;
-const UPDATE_TICK = 150;
+const UPDATE_TICK = {
+   MIN: 10,
+   MAX: 1000,
+   DEFAULT: 150
+};
 const NAV_WIDTH = 400;
-
-let birthday;
-let difference;
-let value;
-let updateTick = UPDATE_TICK;
-let interval;
 
 const user = {
    get birthday() {
@@ -30,7 +28,28 @@ const user = {
          localStorage.setItem('birthday', value.toString());
       }
    }
-}
+};
+
+const settings = {
+   get updateTick() {
+      return localStorage.getItem('updateTick') || UPDATE_TICK.DEFAULT;
+   },
+   set updateTick(value) {
+      if (
+         typeof value === 'number' &&
+         value >= UPDATE_TICK.MIN &&
+         value <= UPDATE_TICK.MAX
+      ) {
+         localStorage.setItem('updateTick', value)
+      }
+   }
+};
+
+let birthday;
+let difference;
+let value;
+let updateTick = settings.updateTick;
+let interval;
 
 /**
  * Checks date value on day, month and year.
@@ -68,6 +87,7 @@ function onSubmitBirthday(event) {
  */
 function onUpdateSpeed({ target }) {
    updateTick = target.value;
+   settings.updateTick = parseInt(updateTick);
    restart();
 }
 
@@ -131,7 +151,7 @@ function calculateAge() {
  * Toggles navbar.
  * @param {Boolean} value Value.
  */
- function toggleNavbar(value) {
+function toggleNavbar(value) {
    const expandValue = (value) ? `${NAV_WIDTH}px` : `${0}px`;
    sidebar.style.width = expandValue;
    birthdayTimeContainer.style.marginRight = expandValue;
