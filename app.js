@@ -19,6 +19,7 @@ let birthday;
 let difference;
 let value;
 let updateTick = UPDATE_TICK;
+let interval;
 
 const user = {
    get birthday() {
@@ -67,6 +68,7 @@ function onSubmitBirthday(event) {
  */
 function onUpdateSpeed({ target }) {
    updateTick = target.value;
+   restart();
 }
 
 /**
@@ -82,10 +84,25 @@ function setActiveControl() {
    if (user.birthday) {
       birthday = new Date(user.birthday);
 
-      // Need to render start.
-      calculateAge();
-      setInterval(calculateAge, updateTick);
+      start();
    }
+}
+
+/**
+ * Starts timer.
+ */
+function start() {
+   // Neede to first render.
+   calculateAge();
+   interval = setInterval(calculateAge, updateTick);
+}
+
+/**
+ * Restarts timer.
+ */
+function restart() {
+   clearInterval(interval);
+   start();
 }
 
 /**
@@ -121,9 +138,17 @@ function calculateAge() {
 }
 
 /**
+ * Sets settings.
+ */
+function setSettings() {
+   updateTickRange.value = updateTick;
+}
+
+/**
  * Entry point.
  */
 function init() {
+   setSettings();
    setCallbacks();
    setActiveControl();
 }

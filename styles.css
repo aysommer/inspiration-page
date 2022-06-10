@@ -27,6 +27,7 @@ body,
    --light-color_a: #eeeeee;
    --light-color_b: #dddddd;
    --padding-s: 8px;
+   --padding-m: 16px;
 }
 
 @media (prefers-color-scheme: light) {
@@ -134,11 +135,21 @@ body,
    padding: var(--padding-s);
 }
 
+.insp__settings-title {
+   padding-left: var(--padding-s);
+   font-size: 42px;
+}
+
 .insp__settings-block {
    white-space: nowrap;
    display: flex;
    align-items: center;
    width: 100%;
+   padding: var(--padding-s);
+}
+
+.insp__settings-option-name {
+   margin-right: var(--padding-s);
 }
 
 #birthday-timer-container {

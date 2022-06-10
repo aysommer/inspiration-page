@@ -43,7 +43,7 @@
                </svg>
             </button>
 
-            <nav id="sidebar" class="insp__side-nav">
+            <section id="sidebar" class="insp__side-nav">
                <button
                   class="insp__button insp__menu-button"
                   id="close-menu-button">
@@ -58,8 +58,13 @@
                </button>
 
                <section class="insp__settings">
+                  <div class="insp__settings-title">
+                     <h1>Settings</h1>
+                  </div>
                   <div class="insp__settings-block">
-                     <label for="update-tick-range">Update speed</label>
+                     <label
+                        class="insp__settings-option-name"
+                        for="update-tick-range">Update speed</label>
                      <input
                         min="10"
                         max="1000"
@@ -68,7 +73,7 @@
                         id="update-tick-range">
                   </div>
                </section>
-            </nav>
+            </section>
          </aside>
       </main>
       <script src="./app.js"></script>
