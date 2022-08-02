@@ -1,13 +1,15 @@
-const birthdayInputForm = document.querySelector('#birthday-form');
-const birthdayInput = document.querySelector('#birthday-input');
-const birthdayTimeContainer = document.querySelector('#birthday-timer-container');
-const birthdayTimer = document.querySelector('#birthday-timer');
-const birthdayTimerSeconds = document.querySelector('#birthday-timer-seconds');
-const sidebar = document.querySelector('#sidebar');
-const form = document.querySelector('#input-container');
-const openMenuButton = document.querySelector('#open-menu-button');
-const closeMenuButton = document.querySelector('#close-menu-button');
-const updateTickRange = document.querySelector('#update-tick-range');
+const $ = document.querySelector.bind(document);
+
+const birthdayInputForm = $('#birthday-form');
+const birthdayInput = $('#birthday-input');
+const birthdayTimeContainer = $('#birthday-timer-container');
+const birthdayTimer = $('#birthday-timer');
+const birthdayTimerSeconds = $('#birthday-timer-seconds');
+const sidebar = $('#sidebar');
+const form = $('#input-container');
+const openMenuButton = $('#open-menu-button');
+const closeMenuButton = $('#close-menu-button');
+const updateTickRange = $('#update-tick-range');
 
 const UNIX_TIME_FULL_YEAR = new Date(0).getFullYear();
 const AGE_DELIMITER = 1000 * 60 * 60 * 24 * 365.25;
