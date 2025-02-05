@@ -1,4 +1,4 @@
 # inspiration-page
 Browser extension for the Google Chrome.
 
-[Demo](https://inspiration-page.vercel.app/)
+<a href="https://inspiration-page.vercel.app/" target="_blank">Demo</a>
