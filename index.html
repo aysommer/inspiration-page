@@ -2,84 +2,122 @@
 <html lang="en">
    <head>
       <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Inspiration</title>
-      <link rel="stylesheet" href="./styles.css">
    </head>
-   <body>
-      <main id="root">
-         <section
-            class="insp__birthday-form"
-            id="birthday-form">
-            <h1>Enter your birthday</h1>
-            <form
-               class="insp__input-container"
-               id="input-container">
-               <input
-                  class="insp__birthday-input"
-                  type="date"
-                  id="birthday-input">
-               <button type="submit">Enter</button>
-            </form>
-         </section>
-         <section id="birthday-timer-container">
-            <section class="insp__birthday-timer">
-               <h1 class="insp__age-title">Your age</h1>
-               <div class="insp__age-line">
-                  <h2 id="birthday-timer" class="insp__age"></h2>
-                  <h2 id="birthday-timer-seconds" class="insp__age-seconds"></h2>
-               </div>
-            </section>
-         </section>
-         <aside>
-            <button
-               class="insp__button insp__menu-button"
-               id="open-menu-button">
-               <svg viewBox="0 0 100 80" width="24" height="24">
-                  <rect y="10" width="100" height="7"></rect>
-                  <rect y="40" width="100" height="7"></rect>
-                  <rect y="70" width="100" height="7"></rect>
-               </svg>
-            </button>
+   <body class="min-h-screen bg-base-200 text-base-content antialiased">
+      <div class="drawer drawer-end">
+         <input id="settings-drawer" type="checkbox" class="drawer-toggle">
 
-            <section id="sidebar" class="insp__side-nav">
-               <button
-                  class="insp__button insp__menu-button"
-                  id="close-menu-button">
-                  <svg viewBox="0 0 512 512" height="24" width="24">
-                     <path
-                        d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4
-                           L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1
-                           c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1
-                           c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z"
-                     />
+         <div class="drawer-content relative flex min-h-screen flex-col">
+            <div class="ambient pointer-events-none absolute inset-0 -z-0"></div>
+
+            <header class="relative z-10 flex items-center justify-between px-6 py-5">
+               <span class="text-[15px] font-semibold tracking-tight text-base-content/80">Inspiration</span>
+               <label
+                  for="settings-drawer"
+                  aria-label="Open settings"
+                  class="btn btn-circle btn-ghost btn-sm text-base-content/70 hover:bg-base-content/10">
+                  <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                     <path d="M10.3 4.3a1.7 1.7 0 0 1 3.4 0l.1.6a1.7 1.7 0 0 0 2.5 1l.5-.3a1.7 1.7 0 0 1 2.4 2.4l-.3.5a1.7 1.7 0 0 0 1 2.5l.6.1a1.7 1.7 0 0 1 0 3.4l-.6.1a1.7 1.7 0 0 0-1 2.5l.3.5a1.7 1.7 0 0 1-2.4 2.4l-.5-.3a1.7 1.7 0 0 0-2.5 1l-.1.6a1.7 1.7 0 0 1-3.4 0l-.1-.6a1.7 1.7 0 0 0-2.5-1l-.5.3a1.7 1.7 0 0 1-2.4-2.4l.3-.5a1.7 1.7 0 0 0-1-2.5l-.6-.1a1.7 1.7 0 0 1 0-3.4l.6-.1a1.7 1.7 0 0 0 1-2.5l-.3-.5a1.7 1.7 0 0 1 2.4-2.4l.5.3a1.7 1.7 0 0 0 2.5-1z"/>
+                     <circle cx="12" cy="12" r="3"/>
                   </svg>
-               </button>
+               </label>
+            </header>
 
-               <section class="insp__settings">
-                  <div class="insp__settings-title">
-                     <h1>Settings</h1>
-                  </div>
-                  <div class="insp__settings-block">
-                     <label
-                        class="insp__settings-option-name"
-                        for="update-tick-range">Update speed</label>
-                     <input
-                        min="10"
-                        max="1000"
-                        type="range"
-                        name="update-tick-range"
-                        id="update-tick-range">
+            <main class="relative z-10 flex flex-1 items-center justify-center px-6 pb-24">
+               <section id="birthday-form" hidden class="w-full max-w-sm">
+                  <div class="glass-card rounded-[28px] p-8 text-center">
+                     <div class="mx-auto mb-5 flex size-14 items-center justify-center rounded-2xl bg-gradient-to-b from-[#ff9f0a] to-[#ff375f] shadow-lg shadow-[#ff375f]/30">
+                        <svg viewBox="0 0 24 24" class="size-7 text-white" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                           <rect x="3" y="5" width="18" height="16" rx="3"/>
+                           <path d="M3 10h18M8 3v4M16 3v4"/>
+                        </svg>
+                     </div>
+                     <h1 class="text-[28px] font-bold leading-tight tracking-tight">When were you born?</h1>
+                     <p class="mt-2 text-[15px] text-base-content/60">Your birthday stays on this device and is only used to count your time.</p>
+                     <form id="birthday-input-form" class="mt-7 flex flex-col gap-3">
+                        <input
+                           id="birthday-input"
+                           type="date"
+                           required
+                           aria-label="Birthday"
+                           class="input input-lg w-full rounded-xl border-0 bg-base-content/5 text-center text-[17px] focus:outline-2 focus:outline-primary">
+                        <button type="submit" class="btn btn-primary btn-lg rounded-full text-[17px] font-semibold">Continue</button>
+                     </form>
                   </div>
                </section>
 
-               <section class="insp__about">
-                  <a href="https://github.com/aysommer/inspiration-page" target="_blank">Source code</a>
+               <section id="birthday-timer" hidden class="text-center">
+                  <p class="text-[13px] font-semibold uppercase tracking-[0.2em] text-base-content/50">Your age</p>
+                  <div class="mt-3 flex items-baseline justify-center tabular-nums">
+                     <span id="age-years" class="age-gradient text-[clamp(6rem,18vw,12rem)] font-bold leading-none tracking-tighter"></span>
+                     <span id="age-fraction" class="text-[clamp(1.75rem,5vw,3.5rem)] font-light leading-none tracking-tight text-base-content/40"></span>
+                  </div>
+                  <p class="mt-6 text-[17px] text-base-content/60">Make every moment count.</p>
                </section>
-            </section>
-         </aside>
-      </main>
-      <script src="./app.js"></script>
+            </main>
+         </div>
+
+         <div class="drawer-side z-20">
+            <label for="settings-drawer" aria-label="Close settings" class="drawer-overlay !bg-black/20 backdrop-blur-[2px]"></label>
+            <aside class="glass-panel ring-1 ring-base-content/10 m-3 flex h-[calc(100%-1.5rem)] w-[min(360px,calc(100vw-1.5rem))] flex-col rounded-[28px] p-5">
+               <div class="flex items-center justify-between px-1">
+                  <h2 class="text-[22px] font-bold tracking-tight">Settings</h2>
+                  <label
+                     for="settings-drawer"
+                     aria-label="Close settings"
+                     class="btn btn-circle btn-xs size-7 border-0 bg-base-content/10 text-base-content/60 hover:bg-base-content/15">
+                     <svg viewBox="0 0 24 24" class="size-3.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                        <path d="M6 6l12 12M18 6L6 18"/>
+                     </svg>
+                  </label>
+               </div>
+
+               <p class="mt-6 px-4 text-[13px] uppercase tracking-wide text-base-content/50">Timer</p>
+               <div class="mt-1.5 rounded-2xl bg-base-100 px-4 py-3.5">
+                  <div class="flex items-center justify-between text-[17px]">
+                     <label for="update-tick-range">Refresh interval</label>
+                     <span class="tabular-nums text-base-content/50"><span id="update-tick-value"></span> ms</span>
+                  </div>
+                  <input
+                     id="update-tick-range"
+                     type="range"
+                     min="10"
+                     max="1000"
+                     step="10"
+                     class="liquid-range mt-3 w-full">
+                  <div class="mt-1.5 flex justify-between text-[12px] text-base-content/40">
+                     <span>Faster</span>
+                     <span>Slower</span>
+                  </div>
+               </div>
+
+               <p class="mt-6 px-4 text-[13px] uppercase tracking-wide text-base-content/50">Profile</p>
+               <div class="mt-1.5 overflow-hidden rounded-2xl bg-base-100">
+                  <div class="flex items-center justify-between px-4 py-3.5 text-[17px]">
+                     <span>Birthday</span>
+                     <span id="birthday-value" class="text-base-content/50">Not set</span>
+                  </div>
+                  <div class="ml-4 h-px bg-base-content/10"></div>
+                  <button id="reset-birthday" type="button" class="w-full px-4 py-3.5 text-left text-[17px] text-primary hover:bg-base-content/5">Change Birthday</button>
+               </div>
+
+               <div class="mt-auto overflow-hidden rounded-2xl bg-base-100">
+                  <a
+                     href="https://github.com/aysommer/inspiration-page"
+                     target="_blank"
+                     rel="noopener"
+                     class="flex items-center justify-between px-4 py-3.5 text-[17px] hover:bg-base-content/5">
+                     <span>Source Code</span>
+                     <svg viewBox="0 0 24 24" class="size-4 text-base-content/30" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 6l6 6-6 6"/>
+                     </svg>
+                  </a>
+               </div>
+            </aside>
+         </div>
+      </div>
+      <script type="module" src="/src/main.js"></script>
    </body>
 </html>
