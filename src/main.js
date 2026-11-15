@@ -1,5 +1,3 @@
-import '@fontsource/google-sans/latin-400.css';
-import '@fontsource/google-sans/latin-500.css';
 import './style.css';
 
 const $ = document.querySelector.bind(document);
@@ -72,6 +70,10 @@ let updateTick = readUpdateTick();
 let interval;
 let design = readDesign();
 
+const googleFontReady = Promise.all(
+   ['400', '500'].map((weight) => document.fonts.load(`${weight} 16px "Google Sans"`))
+).catch(() => {});
+
 function renderAge() {
    const age = (Date.now() - birthday.getTime()) / MS_PER_YEAR;
    const years = String(Math.trunc(age));
@@ -130,9 +132,13 @@ function applyDesign() {
 designInputs.forEach((input) => {
    input.addEventListener('change', () => {
       if (!input.checked) return;
-      design = input.value;
-      storage.set('design', design);
-      applyDesign();
+      const next = input.value;
+      storage.set('design', next);
+      const ready = next === 'google' ? googleFontReady : Promise.resolve();
+      ready.then(() => {
+         design = next;
+         applyDesign();
+      });
    });
 });
 
