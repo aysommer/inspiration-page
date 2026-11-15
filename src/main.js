@@ -95,9 +95,15 @@ function render() {
    }
 }
 
+function renderRangeFill() {
+   const { min, max, value } = updateTickRange;
+   updateTickRange.style.setProperty('--fill', `${((value - min) / (max - min)) * 100}%`);
+}
+
 function renderUpdateTick() {
    updateTickRange.value = updateTick;
    updateTickValue.textContent = updateTick;
+   renderRangeFill();
 }
 
 birthdayInputForm.addEventListener('submit', (event) => {
@@ -117,6 +123,7 @@ birthdayInput.addEventListener('input', () => birthdayInput.setCustomValidity(''
 
 updateTickRange.addEventListener('input', () => {
    updateTickValue.textContent = updateTickRange.value;
+   renderRangeFill();
 });
 
 updateTickRange.addEventListener('change', () => {
