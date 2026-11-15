@@ -13,7 +13,7 @@ const updateTickRange = $('#update-tick-range');
 const updateTickValue = $('#update-tick-value');
 const birthdayValue = $('#birthday-value');
 const resetBirthdayButton = $('#reset-birthday');
-const designInputs = document.querySelectorAll('input[name="design"]');
+const designSelect = $('#design-select');
 const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 const colorScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -125,22 +125,18 @@ function applyDesign() {
    const root = document.documentElement;
    root.dataset.design = design;
    root.dataset.theme = `${design}-${colorScheme.matches ? 'dark' : 'light'}`;
-   designInputs.forEach((input) => {
-      input.checked = input.value === design;
-   });
+   designSelect.value = design;
    themeColorMeta.content = getComputedStyle(document.body).backgroundColor;
 }
 
-designInputs.forEach((input) => {
-   input.addEventListener('change', () => {
-      if (!input.checked) return;
-      const next = input.value;
-      storage.set('design', next);
-      const ready = next === 'google' ? googleFontReady : Promise.resolve();
-      ready.then(() => {
-         design = next;
-         applyDesign();
-      });
+designSelect.addEventListener('change', () => {
+   const next = designSelect.value;
+   if (!DESIGNS.includes(next)) return;
+   storage.set('design', next);
+   const ready = next === 'google' ? googleFontReady : Promise.resolve();
+   ready.then(() => {
+      design = next;
+      applyDesign();
    });
 });
 
