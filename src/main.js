@@ -1,3 +1,5 @@
+import '@fontsource/google-sans/latin-400.css';
+import '@fontsource/google-sans/latin-500.css';
 import './style.css';
 
 const $ = document.querySelector.bind(document);
@@ -13,11 +15,15 @@ const updateTickRange = $('#update-tick-range');
 const updateTickValue = $('#update-tick-value');
 const birthdayValue = $('#birthday-value');
 const resetBirthdayButton = $('#reset-birthday');
+const designInputs = document.querySelectorAll('input[name="design"]');
+const colorScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
 const MS_PER_YEAR = 1000 * 60 * 60 * 24 * 365.25;
 const FRACTION_DIGITS = 10;
 const UPDATE_TICK = { MIN: 10, MAX: 1000, DEFAULT: 150 };
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+const DESIGNS = ['apple', 'google'];
+const DEFAULT_DESIGN = 'apple';
 
 const storage = {
    get(key) {
@@ -56,9 +62,15 @@ function readUpdateTick() {
    return value >= UPDATE_TICK.MIN && value <= UPDATE_TICK.MAX ? value : UPDATE_TICK.DEFAULT;
 }
 
+function readDesign() {
+   const value = storage.get('design');
+   return DESIGNS.includes(value) ? value : DEFAULT_DESIGN;
+}
+
 let birthday = parseBirthday(storage.get('birthday'));
 let updateTick = readUpdateTick();
 let interval;
+let design = readDesign();
 
 function renderAge() {
    const age = (Date.now() - birthday.getTime()) / MS_PER_YEAR;
@@ -106,6 +118,26 @@ function renderUpdateTick() {
    renderRangeFill();
 }
 
+function applyDesign() {
+   const root = document.documentElement;
+   root.dataset.design = design;
+   root.dataset.theme = `${design}-${colorScheme.matches ? 'dark' : 'light'}`;
+   designInputs.forEach((input) => {
+      input.checked = input.value === design;
+   });
+}
+
+designInputs.forEach((input) => {
+   input.addEventListener('change', () => {
+      if (!input.checked) return;
+      design = input.value;
+      storage.set('design', design);
+      applyDesign();
+   });
+});
+
+colorScheme.addEventListener('change', applyDesign);
+
 birthdayInputForm.addEventListener('submit', (event) => {
    event.preventDefault();
    const date = parseBirthday(birthdayInput.value);
@@ -146,5 +178,6 @@ document.addEventListener('keydown', (event) => {
    if (event.key === 'Escape') drawerToggle.checked = false;
 });
 
+applyDesign();
 renderUpdateTick();
 render();

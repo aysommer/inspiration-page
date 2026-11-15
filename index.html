@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-design="apple">
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Inspiration</title>
       <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
       <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png">
+      <script src="/design-init.js"></script>
    </head>
    <body class="min-h-screen bg-base-200 text-base-content antialiased">
       <div class="drawer drawer-end">
@@ -15,103 +16,109 @@
             <div class="ambient pointer-events-none absolute inset-0 -z-0"></div>
 
             <header class="relative z-10 flex items-center justify-between px-6 py-5">
-               <span class="text-[15px] font-semibold tracking-tight text-base-content/80">Inspiration</span>
-               <label
-                  for="settings-drawer"
-                  aria-label="Open settings"
-                  class="btn btn-circle btn-ghost btn-sm text-base-content/70 hover:bg-base-content/10">
-                  <svg viewBox="0 0 24 24" class="size-[22px]" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round">
-                     <path fill-rule="evenodd" d="M10.19 5.24L10.63 2.80A9.3 9.3 0 0 1 13.37 2.80L13.81 5.24A7.0 7.0 0 0 1 15.50 5.94L15.50 5.94L17.53 4.52A9.3 9.3 0 0 1 19.48 6.47L18.06 8.50A7.0 7.0 0 0 1 18.76 10.19L18.76 10.19L21.20 10.63A9.3 9.3 0 0 1 21.20 13.37L18.76 13.81A7.0 7.0 0 0 1 18.06 15.50L18.06 15.50L19.48 17.53A9.3 9.3 0 0 1 17.53 19.48L15.50 18.06A7.0 7.0 0 0 1 13.81 18.76L13.81 18.76L13.37 21.20A9.3 9.3 0 0 1 10.63 21.20L10.19 18.76A7.0 7.0 0 0 1 8.50 18.06L8.50 18.06L6.47 19.48A9.3 9.3 0 0 1 4.52 17.53L5.94 15.50A7.0 7.0 0 0 1 5.24 13.81L5.24 13.81L2.80 13.37A9.3 9.3 0 0 1 2.80 10.63L5.24 10.19A7.0 7.0 0 0 1 5.94 8.50L5.94 8.50L4.52 6.47A9.3 9.3 0 0 1 6.47 4.52L8.50 5.94A7.0 7.0 0 0 1 10.19 5.24ZM15.4 12A3.4 3.4 0 1 0 8.6 12A3.4 3.4 0 1 0 15.4 12Z"/>
+               <span class="brand">Inspiration</span>
+               <label for="settings-drawer" aria-label="Open settings" class="icon-btn">
+                  <svg viewBox="0 0 24 24" class="only-apple size-[22px]" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round">
+                     <path fill-rule="evenodd" d="M10.19 5.24L10.63 2.80A9.3 9.3 0 0 1 13.37 2.80L13.81 5.24A7.0 7.0 0 0 1 15.50 5.94L17.53 4.52A9.3 9.3 0 0 1 19.48 6.47L18.06 8.50A7.0 7.0 0 0 1 18.76 10.19L21.20 10.63A9.3 9.3 0 0 1 21.20 13.37L18.76 13.81A7.0 7.0 0 0 1 18.06 15.50L19.48 17.53A9.3 9.3 0 0 1 17.53 19.48L15.50 18.06A7.0 7.0 0 0 1 13.81 18.76L13.37 21.20A9.3 9.3 0 0 1 10.63 21.20L10.19 18.76A7.0 7.0 0 0 1 8.50 18.06L6.47 19.48A9.3 9.3 0 0 1 4.52 17.53L5.94 15.50A7.0 7.0 0 0 1 5.24 13.81L2.80 13.37A9.3 9.3 0 0 1 2.80 10.63L5.24 10.19A7.0 7.0 0 0 1 5.94 8.50L4.52 6.47A9.3 9.3 0 0 1 6.47 4.52L8.50 5.94A7.0 7.0 0 0 1 10.19 5.24ZM15.4 12A3.4 3.4 0 1 0 8.6 12A3.4 3.4 0 1 0 15.4 12Z"/>
+                  </svg>
+                  <svg viewBox="0 0 24 24" class="only-google size-6" fill="currentColor">
+                     <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
                   </svg>
                </label>
             </header>
 
             <main class="relative z-10 flex flex-1 items-center justify-center px-6 pb-24">
                <section id="birthday-form" hidden class="w-full max-w-sm">
-                  <div class="glass-card rounded-[28px] p-8 text-center">
-                     <div class="mx-auto mb-5 flex size-14 items-center justify-center rounded-2xl bg-gradient-to-b from-[#ff9f0a] to-[#ff375f] shadow-lg shadow-[#ff375f]/30">
-                        <svg viewBox="0 0 24 24" class="size-7 text-white" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <div class="card-surface p-8 text-center">
+                     <div class="badge-icon mx-auto mb-5 flex size-14 items-center justify-center">
+                        <svg viewBox="0 0 24 24" class="size-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                            <rect x="3" y="5" width="18" height="16" rx="3"/>
                            <path d="M3 10h18M8 3v4M16 3v4"/>
                         </svg>
                      </div>
-                     <h1 class="text-[28px] font-bold leading-tight tracking-tight">When were you born?</h1>
-                     <p class="mt-2 text-[15px] text-base-content/60">Your birthday stays on this device and is only used to count your time.</p>
+                     <h1 class="headline">When were you born?</h1>
+                     <p class="supporting mt-2">Your birthday stays on this device and is only used to count your time.</p>
                      <form id="birthday-input-form" class="mt-7 flex flex-col gap-3">
-                        <input
-                           id="birthday-input"
-                           type="date"
-                           required
-                           aria-label="Birthday"
-                           class="input input-lg w-full rounded-xl border-0 bg-base-content/5 text-center text-[17px] focus:outline-2 focus:outline-primary">
-                        <button type="submit" class="btn btn-primary btn-lg rounded-full text-[17px] font-semibold">Continue</button>
+                        <input id="birthday-input" type="date" required aria-label="Birthday" class="field w-full">
+                        <button type="submit" class="cta">Continue</button>
                      </form>
                   </div>
                </section>
 
                <section id="birthday-timer" hidden class="text-center">
-                  <p class="text-[13px] font-semibold uppercase tracking-[0.2em] text-base-content/50">Your age</p>
+                  <p class="eyebrow">Your age</p>
                   <div class="mt-3 flex max-w-full items-baseline justify-center tabular-nums">
-                     <span id="age-years" class="age-gradient text-[clamp(5rem,18vw,12rem)] font-bold leading-none tracking-tighter"></span>
-                     <span id="age-fraction" class="text-[clamp(1.5rem,5vw,3.5rem)] font-light leading-none tracking-tight text-base-content/40"></span>
+                     <span id="age-years" class="age-years"></span>
+                     <span id="age-fraction" class="age-fraction"></span>
                   </div>
-                  <p class="mt-6 text-[17px] text-base-content/60">Make every moment count.</p>
+                  <p class="tagline mt-6">Make every moment count.</p>
                </section>
             </main>
          </div>
 
          <div class="drawer-side z-20">
             <label for="settings-drawer" aria-label="Close settings" class="drawer-overlay"></label>
-            <aside id="settings-panel" class="glass-panel relative ring-1 ring-base-content/10 m-3 flex h-[calc(100%-1.5rem)] w-[min(360px,calc(100vw-1.5rem))] flex-col rounded-[28px] p-5">
+            <aside id="settings-panel" class="panel relative m-3 flex h-[calc(100%-1.5rem)] w-[min(360px,calc(100vw-1.5rem))] flex-col p-5">
                <div class="-mt-3 flex h-8 items-center px-1 pr-10">
-                  <h2 class="text-[22px] font-bold tracking-tight">Settings</h2>
+                  <h2 class="panel-title">Settings</h2>
                </div>
-               <label
-                  for="settings-drawer"
-                  aria-label="Close settings"
-                  class="btn btn-circle btn-sm absolute top-2 right-3 size-8 border-0 bg-base-content/10 text-base-content/60 hover:bg-base-content/15">
-                  <svg viewBox="0 0 24 24" class="size-3.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+               <label for="settings-drawer" aria-label="Close settings" class="icon-btn close-btn absolute top-2 right-3">
+                  <svg viewBox="0 0 24 24" class="only-apple size-3.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
                      <path d="M6 6l12 12M18 6L6 18"/>
+                  </svg>
+                  <svg viewBox="0 0 24 24" class="only-google size-6" fill="currentColor">
+                     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
                   </svg>
                </label>
 
-               <p class="mt-6 px-4 text-[13px] uppercase tracking-wide text-base-content/50">Timer</p>
-               <div class="mt-1.5 rounded-2xl bg-base-100 px-4 py-3.5">
-                  <div class="flex items-center justify-between text-[17px]">
-                     <label for="update-tick-range">Refresh interval</label>
-                     <span class="tabular-nums text-base-content/50"><span id="update-tick-value"></span> ms</span>
-                  </div>
-                  <input
-                     id="update-tick-range"
-                     type="range"
-                     min="10"
-                     max="1000"
-                     step="10"
-                     class="liquid-range mt-3 w-full">
-                  <div class="mt-1.5 flex justify-between text-[12px] text-base-content/40">
-                     <span>Faster</span>
-                     <span>Slower</span>
+               <p class="section-label mt-6">Appearance</p>
+               <div class="group">
+                  <div class="row">
+                     <span id="design-label">Design</span>
+                     <div class="segmented" role="radiogroup" aria-labelledby="design-label">
+                        <label class="segment">
+                           <input type="radio" name="design" value="apple" class="sr-only">
+                           <svg viewBox="0 0 24 24" class="segment-check" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                           <span>Apple</span>
+                        </label>
+                        <label class="segment">
+                           <input type="radio" name="design" value="google" class="sr-only">
+                           <svg viewBox="0 0 24 24" class="segment-check" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                           <span>Google</span>
+                        </label>
+                     </div>
                   </div>
                </div>
 
-               <p class="mt-6 px-4 text-[13px] uppercase tracking-wide text-base-content/50">Profile</p>
-               <div class="mt-1.5 overflow-hidden rounded-2xl bg-base-100">
-                  <div class="flex items-center justify-between px-4 py-3.5 text-[17px]">
+               <p class="section-label mt-6">Timer</p>
+               <div class="group">
+                  <div class="row-block">
+                     <div class="flex items-center justify-between">
+                        <label for="update-tick-range">Refresh interval</label>
+                        <span class="row-value tabular-nums"><span id="update-tick-value"></span> ms</span>
+                     </div>
+                     <input id="update-tick-range" type="range" min="10" max="1000" step="10" class="tick-range mt-3 w-full">
+                     <div class="hint mt-1.5 flex justify-between">
+                        <span>Faster</span>
+                        <span>Slower</span>
+                     </div>
+                  </div>
+               </div>
+
+               <p class="section-label mt-6">Profile</p>
+               <div class="group">
+                  <div class="row">
                      <span>Birthday</span>
-                     <span id="birthday-value" class="text-base-content/50">Not set</span>
+                     <span id="birthday-value" class="row-value">Not set</span>
                   </div>
-                  <div class="ml-4 h-px bg-base-content/10"></div>
-                  <button id="reset-birthday" type="button" class="w-full px-4 py-3.5 text-left text-[17px] text-primary hover:bg-base-content/5">Change Birthday</button>
+                  <div class="row-divider"></div>
+                  <button id="reset-birthday" type="button" class="row row-action w-full text-left">Change Birthday</button>
                </div>
 
-               <div class="mt-auto overflow-hidden rounded-2xl bg-base-100">
-                  <a
-                     href="https://github.com/aysommer/inspiration-page"
-                     target="_blank"
-                     rel="noopener"
-                     class="flex items-center justify-between px-4 py-3.5 text-[17px] hover:bg-base-content/5">
+               <div class="group mt-auto">
+                  <a href="https://github.com/aysommer/inspiration-page" target="_blank" rel="noopener" class="row row-link">
                      <span>Source Code</span>
-                     <svg viewBox="0 0 24 24" class="size-4 text-base-content/30" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                     <svg viewBox="0 0 24 24" class="size-4 opacity-40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M9 6l6 6-6 6"/>
                      </svg>
                   </a>

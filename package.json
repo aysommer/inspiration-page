@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@fontsource/google-sans": "^5.3.2",
     "@tailwindcss/vite": "^4.3.5",
     "daisyui": "^5.8.0",
     "tailwindcss": "^4.3.5",
