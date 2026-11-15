@@ -68,8 +68,8 @@
    }
 
    .glass-panel {
-      background: color-mix(in oklab, var(--color-base-200) 82%, transparent);
-      backdrop-filter: saturate(180%) blur(30px);
+      background: color-mix(in oklab, var(--color-base-200) 86%, transparent);
+      backdrop-filter: saturate(160%) blur(20px);
       box-shadow: 0 30px 80px -20px rgb(0 0 0 / 0.35);
    }
 
@@ -201,6 +201,51 @@
          --glass-edge: rgb(255 255 255 / 0.8);
          --glass-shadow: rgb(0 0 0 / 0.5);
          --track-empty: rgb(255 255 255 / 0.14);
+      }
+   }
+}
+
+@layer components {
+   #settings-drawer ~ .drawer-side {
+      opacity: 1;
+      visibility: hidden;
+      transition: visibility 0s linear 0.5s;
+   }
+
+   #settings-drawer:checked ~ .drawer-side {
+      visibility: visible;
+      transition-delay: 0s;
+   }
+
+   #settings-drawer ~ .drawer-side > .drawer-overlay {
+      background-color: rgb(0 0 0 / 0.22);
+      opacity: 0;
+      transition: opacity 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+   }
+
+   #settings-drawer:checked ~ .drawer-side > .drawer-overlay {
+      opacity: 1;
+   }
+
+   #settings-drawer ~ .drawer-side > #settings-panel,
+   #settings-drawer:checked ~ .drawer-side > #settings-panel {
+      will-change: translate;
+      contain: layout style;
+      transition: translate 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+   }
+
+   #settings-drawer ~ .drawer-side > #settings-panel {
+      translate: calc(100% + 1.5rem) 0;
+   }
+
+   #settings-drawer:checked ~ .drawer-side > #settings-panel {
+      translate: 0 0;
+   }
+
+   @media (prefers-reduced-motion: reduce) {
+      #settings-drawer ~ .drawer-side > .drawer-overlay,
+      #settings-drawer ~ .drawer-side > #settings-panel {
+         transition-duration: 0s;
       }
    }
 }
