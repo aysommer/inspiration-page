@@ -14,6 +14,7 @@ const updateTickValue = $('#update-tick-value');
 const birthdayValue = $('#birthday-value');
 const resetBirthdayButton = $('#reset-birthday');
 const designInputs = document.querySelectorAll('input[name="design"]');
+const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 const colorScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
 const MS_PER_YEAR = 1000 * 60 * 60 * 24 * 365.25;
@@ -127,6 +128,7 @@ function applyDesign() {
    designInputs.forEach((input) => {
       input.checked = input.value === design;
    });
+   themeColorMeta.content = getComputedStyle(document.body).backgroundColor;
 }
 
 designInputs.forEach((input) => {

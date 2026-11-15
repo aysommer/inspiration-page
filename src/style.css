@@ -134,6 +134,15 @@
       --outline-variant: #444746;
    }
 
+   html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+   }
+
+   body {
+      -webkit-tap-highlight-color: transparent;
+   }
+
    [data-design="google"] body {
       font-family: var(--font-google);
    }
@@ -170,6 +179,7 @@
    }
 
    .icon-btn {
+      position: relative;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -181,8 +191,17 @@
       transition: background-color 0.2s ease;
    }
 
-   .icon-btn:hover {
-      background: color-mix(in oklab, var(--color-base-content) 10%, transparent);
+   @media (hover: hover) {
+      .icon-btn:hover {
+         background: color-mix(in oklab, var(--color-base-content) 10%, transparent);
+      }
+   }
+
+   .icon-btn::before {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 999px;
    }
 
    .close-btn {
@@ -190,8 +209,10 @@
       color: color-mix(in oklab, var(--color-base-content) 60%, transparent);
    }
 
-   .close-btn:hover {
-      background: color-mix(in oklab, var(--color-base-content) 15%, transparent);
+   @media (hover: hover) {
+      .close-btn:hover {
+         background: color-mix(in oklab, var(--color-base-content) 15%, transparent);
+      }
    }
 
    [data-design="google"] .icon-btn {
@@ -199,8 +220,10 @@
       background: transparent;
    }
 
-   [data-design="google"] .icon-btn:hover {
-      background: color-mix(in oklab, var(--color-base-content) 8%, transparent);
+   @media (hover: hover) {
+      [data-design="google"] .icon-btn:hover {
+         background: color-mix(in oklab, var(--color-base-content) 8%, transparent);
+      }
    }
 
    .card-surface {
@@ -258,9 +281,17 @@
    }
 
    .field {
+      -webkit-appearance: none;
+      appearance: none;
       display: block;
-      height: 3rem;
-      padding-inline: 1rem;
+      box-sizing: border-box;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      height: auto;
+      min-height: 3rem;
+      padding: 0.75rem 1rem;
+      line-height: 1.5rem;
       border: 0;
       border-radius: 0.75rem;
       background: color-mix(in oklab, var(--color-base-content) 5%, transparent);
@@ -270,12 +301,27 @@
       outline: none;
    }
 
+   .field::-webkit-date-and-time-value {
+      margin: 0;
+      min-height: 1.5rem;
+      text-align: center;
+   }
+
+   [data-design="google"] .field::-webkit-date-and-time-value {
+      text-align: left;
+   }
+
+   .field::-webkit-datetime-edit {
+      padding: 0;
+   }
+
    .field:focus {
       box-shadow: 0 0 0 2px var(--color-primary);
    }
 
    [data-design="google"] .field {
-      height: 3.5rem;
+      min-height: 3.5rem;
+      padding-block: 1rem;
       border: 1px solid var(--outline);
       border-radius: 4px;
       background: transparent;
@@ -303,8 +349,10 @@
       transition: filter 0.2s ease, box-shadow 0.2s ease;
    }
 
-   .cta:hover {
-      filter: brightness(1.08);
+   @media (hover: hover) {
+      .cta:hover {
+         filter: brightness(1.08);
+      }
    }
 
    .cta:active {
@@ -323,10 +371,12 @@
       letter-spacing: 0.01em;
    }
 
-   [data-design="google"] .cta:hover {
-      filter: none;
-      box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 1px 3px 1px rgb(0 0 0 / 0.15);
-      background: color-mix(in oklab, var(--color-primary) 92%, var(--color-primary-content));
+   @media (hover: hover) {
+      [data-design="google"] .cta:hover {
+         filter: none;
+         box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 1px 3px 1px rgb(0 0 0 / 0.15);
+         background: color-mix(in oklab, var(--color-primary) 92%, var(--color-primary-content));
+      }
    }
 
    .eyebrow {
@@ -491,14 +541,18 @@
       font-weight: 500;
    }
 
-   .row-action:hover,
-   .row-link:hover {
-      background: color-mix(in oklab, var(--color-base-content) 5%, transparent);
+   @media (hover: hover) {
+      .row-action:hover,
+      .row-link:hover {
+         background: color-mix(in oklab, var(--color-base-content) 5%, transparent);
+      }
    }
 
-   [data-design="google"] .row-action:hover,
-   [data-design="google"] .row-link:hover {
-      background: color-mix(in oklab, var(--color-base-content) 8%, transparent);
+   @media (hover: hover) {
+      [data-design="google"] .row-action:hover,
+      [data-design="google"] .row-link:hover {
+         background: color-mix(in oklab, var(--color-base-content) 8%, transparent);
+      }
    }
 
    .hint {
@@ -576,8 +630,10 @@
       box-shadow: inset 1px 0 0 var(--outline);
    }
 
-   [data-design="google"] .segment:hover {
-      background: color-mix(in oklab, var(--color-base-content) 8%, transparent);
+   @media (hover: hover) {
+      [data-design="google"] .segment:hover {
+         background: color-mix(in oklab, var(--color-base-content) 8%, transparent);
+      }
    }
 
    [data-design="google"] .segment:has(input:checked) {
