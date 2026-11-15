@@ -21,7 +21,7 @@ const MS_PER_YEAR = 1000 * 60 * 60 * 24 * 365.25;
 const FRACTION_DIGITS = 10;
 const UPDATE_TICK = { MIN: 10, MAX: 1000, DEFAULT: 150 };
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
-const DESIGNS = ['apple', 'google'];
+const DESIGNS = ['apple', 'google', 'microsoft'];
 const DEFAULT_DESIGN = 'apple';
 
 const storage = {

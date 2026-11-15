@@ -1,7 +1,8 @@
 (function () {
    var design = 'apple';
    try {
-      if (localStorage.getItem('design') === 'google') design = 'google';
+      var saved = localStorage.getItem('design');
+      if (saved === 'google' || saved === 'microsoft') design = saved;
    } catch (e) {}
    var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
    var root = document.documentElement;

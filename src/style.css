@@ -94,6 +94,56 @@
    --noise: 0;
 }
 
+@plugin "daisyui/theme" {
+   name: "microsoft-light";
+   color-scheme: light;
+   --color-base-100: #ffffff;
+   --color-base-200: #f3f3f3;
+   --color-base-300: #ebebeb;
+   --color-base-content: #1a1a1a;
+   --color-primary: #005fb8;
+   --color-primary-content: #ffffff;
+   --color-secondary: #616161;
+   --color-secondary-content: #ffffff;
+   --color-accent: #005fb8;
+   --color-accent-content: #ffffff;
+   --color-neutral: #1a1a1a;
+   --color-neutral-content: #ffffff;
+   --radius-field: 0.25rem;
+   --radius-box: 0.5rem;
+   --border: 1px;
+   --depth: 0;
+   --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+   name: "microsoft-dark";
+   color-scheme: dark;
+   --color-base-100: #2b2b2b;
+   --color-base-200: #202020;
+   --color-base-300: #2d2d2d;
+   --color-base-content: #ffffff;
+   --color-primary: #60cdff;
+   --color-primary-content: #000000;
+   --color-secondary: #cfcfcf;
+   --color-secondary-content: #000000;
+   --color-accent: #60cdff;
+   --color-accent-content: #000000;
+   --color-neutral: #ffffff;
+   --color-neutral-content: #202020;
+   --radius-field: 0.25rem;
+   --radius-box: 0.5rem;
+   --border: 1px;
+   --depth: 0;
+   --noise: 0;
+}
+
+@property --dot {
+   syntax: "<length>";
+   inherits: true;
+   initial-value: 6px;
+}
+
 @font-face {
    font-family: "Google Sans";
    font-style: normal;
@@ -113,6 +163,8 @@
 @theme {
    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
    --font-google: "Google Sans", Roboto, Arial, sans-serif;
+   --font-microsoft: "Segoe UI Variable Text", "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+   --font-microsoft-display: "Segoe UI Variable Display", "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 @layer base {
@@ -134,6 +186,44 @@
       --outline-variant: #444746;
    }
 
+   [data-theme="microsoft-light"] {
+      --text-secondary: rgb(0 0 0 / 0.61);
+      --text-tertiary: rgb(0 0 0 / 0.45);
+      --card-fill: rgb(255 255 255 / 0.7);
+      --card-stroke: rgb(0 0 0 / 0.06);
+      --control-fill: rgb(255 255 255 / 0.7);
+      --control-fill-hover: rgb(249 249 249 / 0.5);
+      --control-fill-focus: #ffffff;
+      --control-stroke: rgb(0 0 0 / 0.06);
+      --control-stroke-bottom: rgb(0 0 0 / 0.16);
+      --strong-stroke: rgb(0 0 0 / 0.45);
+      --subtle-hover: rgb(0 0 0 / 0.04);
+      --subtle-pressed: rgb(0 0 0 / 0.02);
+      --segment-selected: #ffffff;
+      --thumb-fill: #ffffff;
+      --acrylic: rgb(252 252 252 / 0.85);
+      --mica-tint: rgb(0 95 184 / 0.08);
+   }
+
+   [data-theme="microsoft-dark"] {
+      --text-secondary: rgb(255 255 255 / 0.79);
+      --text-tertiary: rgb(255 255 255 / 0.54);
+      --card-fill: rgb(255 255 255 / 0.05);
+      --card-stroke: rgb(255 255 255 / 0.07);
+      --control-fill: rgb(255 255 255 / 0.06);
+      --control-fill-hover: rgb(255 255 255 / 0.08);
+      --control-fill-focus: #1e1e1e;
+      --control-stroke: rgb(255 255 255 / 0.07);
+      --control-stroke-bottom: rgb(255 255 255 / 0.09);
+      --strong-stroke: rgb(255 255 255 / 0.54);
+      --subtle-hover: rgb(255 255 255 / 0.06);
+      --subtle-pressed: rgb(255 255 255 / 0.04);
+      --segment-selected: rgb(255 255 255 / 0.08);
+      --thumb-fill: #454545;
+      --acrylic: rgb(44 44 44 / 0.88);
+      --mica-tint: rgb(96 205 255 / 0.06);
+   }
+
    html {
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
@@ -147,8 +237,14 @@
       font-family: var(--font-google);
    }
 
-   [data-design="apple"] .only-google,
-   [data-design="google"] .only-apple {
+   [data-design="microsoft"] body {
+      font-family: var(--font-microsoft);
+   }
+
+   [data-design]:not([data-design="apple"]) .only-apple,
+   [data-design]:not([data-design="google"]) .only-google,
+   [data-design]:not([data-design="microsoft"]) .only-microsoft,
+   [data-design="microsoft"] .not-microsoft {
       display: none;
    }
 }
@@ -165,6 +261,7 @@
    }
 
    .brand {
+      line-height: 2rem;
       font-size: 15px;
       font-weight: 600;
       letter-spacing: -0.01em;
@@ -227,6 +324,7 @@
    }
 
    .card-surface {
+      text-align: center;
       border-radius: 28px;
       background: color-mix(in oklab, var(--color-base-100) 72%, transparent);
       backdrop-filter: saturate(180%) blur(24px);
@@ -241,6 +339,7 @@
    }
 
    .badge-icon {
+      margin-inline: auto;
       border-radius: 1rem;
       color: #ffffff;
       background: linear-gradient(180deg, #ff9f0a, #ff375f);
@@ -565,7 +664,10 @@
    }
 
    .segmented {
-      display: inline-flex;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+      width: 100%;
       padding: 2px;
       border-radius: 9px;
       background: color-mix(in oklab, var(--color-base-content) 8%, transparent);
@@ -577,8 +679,8 @@
       align-items: center;
       justify-content: center;
       gap: 0.25rem;
-      min-width: 4.5rem;
-      padding: 0.25rem 0.75rem;
+      min-width: 0;
+      padding: 0.25rem 0.5rem;
       border-radius: 7px;
       font-size: 13px;
       font-weight: 500;
@@ -604,8 +706,13 @@
 
    .segment-check {
       display: none;
+      flex-shrink: 0;
       width: 18px;
       height: 18px;
+   }
+
+   .segment > span {
+      white-space: nowrap;
    }
 
    [data-design="google"] .segmented {
@@ -619,7 +726,7 @@
    [data-design="google"] .segment {
       height: 2.5rem;
       min-width: 0;
-      padding: 0 0.875rem;
+      padding: 0 0.25rem;
       border-radius: 0;
       font-size: 14px;
       font-weight: 500;
@@ -882,5 +989,371 @@
       #settings-drawer ~ .drawer-side > #settings-panel {
          transition-duration: 0s;
       }
+   }
+}
+
+@layer components {
+   [data-design="microsoft"] .ambient {
+      background:
+         radial-gradient(60rem 40rem at 0% 0%, var(--mica-tint), transparent 70%),
+         radial-gradient(50rem 36rem at 100% 100%, var(--mica-tint), transparent 70%);
+   }
+
+   [data-design="microsoft"] .brand {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0;
+      color: var(--color-base-content);
+   }
+
+   [data-design="microsoft"] .icon-btn,
+   [data-design="microsoft"] .close-btn {
+      border-radius: 4px;
+      background: transparent;
+      color: var(--color-base-content);
+      transition: background-color 0.083s linear;
+   }
+
+   [data-design="microsoft"] .icon-btn::before {
+      border-radius: 4px;
+   }
+
+   @media (hover: hover) {
+      [data-design="microsoft"] .icon-btn:hover {
+         background: var(--subtle-hover);
+      }
+   }
+
+   [data-design="microsoft"] .icon-btn:active {
+      background: var(--subtle-pressed);
+      color: var(--text-secondary);
+   }
+
+   [data-design="microsoft"] .card-surface {
+      text-align: left;
+      border-radius: 8px;
+      background: var(--color-base-100);
+      backdrop-filter: none;
+      box-shadow: 0 0 0 1px var(--card-stroke), 0 32px 64px rgb(0 0 0 / 0.19), 0 2px 21px rgb(0 0 0 / 0.15);
+   }
+
+   [data-design="microsoft"] .badge-icon {
+      margin-inline: 0;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 8px;
+      color: var(--color-primary-content);
+      background: var(--color-primary);
+      box-shadow: none;
+   }
+
+   [data-design="microsoft"] .headline {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: 0;
+   }
+
+   [data-design="microsoft"] .supporting {
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
+      color: var(--text-secondary);
+   }
+
+   [data-design="microsoft"] .field {
+      min-height: 2rem;
+      padding: 5px 11px;
+      line-height: 20px;
+      border: 1px solid var(--control-stroke);
+      border-bottom-color: var(--strong-stroke);
+      border-radius: 4px;
+      background: var(--control-fill);
+      text-align: left;
+      font-size: 14px;
+   }
+
+   [data-design="microsoft"] .field::-webkit-date-and-time-value {
+      min-height: 20px;
+      text-align: left;
+   }
+
+   @media (hover: hover) {
+      [data-design="microsoft"] .field:hover {
+         background: var(--control-fill-hover);
+      }
+   }
+
+   [data-design="microsoft"] .field:focus {
+      background: var(--control-fill-focus);
+      border-bottom-color: var(--color-primary);
+      box-shadow: inset 0 -1px 0 var(--color-primary);
+   }
+
+   [data-design="microsoft"] .cta {
+      height: 2rem;
+      padding-inline: 1rem;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0;
+      box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08), inset 0 -1px 0 rgb(0 0 0 / 0.4);
+      transition: background-color 0.083s linear;
+   }
+
+   @media (hover: hover) {
+      [data-design="microsoft"] .cta:hover {
+         filter: none;
+         background: color-mix(in oklab, var(--color-primary) 90%, var(--color-base-200));
+      }
+   }
+
+   [data-design="microsoft"] .cta:active {
+      filter: none;
+      background: color-mix(in oklab, var(--color-primary) 80%, var(--color-base-200));
+      color: color-mix(in oklab, var(--color-primary-content) 80%, transparent);
+      box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+   }
+
+   @media (pointer: coarse) {
+      [data-design="microsoft"] .field {
+         min-height: 2.5rem;
+         padding-block: 9px;
+         font-size: 16px;
+      }
+
+      [data-design="microsoft"] .cta {
+         height: 2.5rem;
+      }
+   }
+
+   [data-design="microsoft"] .eyebrow {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--text-secondary);
+   }
+
+   [data-design="microsoft"] .age-years {
+      font-family: var(--font-microsoft-display);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      background: none;
+      -webkit-background-clip: border-box;
+      background-clip: border-box;
+      padding: 0;
+      margin: 0;
+      color: var(--color-base-content);
+   }
+
+   [data-design="microsoft"] .age-fraction {
+      font-family: var(--font-microsoft-display);
+      font-weight: 400;
+      letter-spacing: 0;
+      color: var(--text-secondary);
+   }
+
+   [data-design="microsoft"] .tagline {
+      font-size: 18px;
+      line-height: 24px;
+      color: var(--text-secondary);
+   }
+
+   [data-design="microsoft"] .panel {
+      border-radius: 8px;
+      background: var(--acrylic);
+      backdrop-filter: saturate(125%) blur(20px);
+      box-shadow: 0 0 0 1px var(--card-stroke), 0 8px 16px rgb(0 0 0 / 0.14);
+   }
+
+   [data-design="microsoft"] .panel-title {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0;
+   }
+
+   [data-design="microsoft"] .section-label {
+      padding-inline: 1px;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--color-base-content);
+   }
+
+   [data-design="microsoft"] .group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 0.5rem;
+      overflow: visible;
+      border-radius: 0;
+      background: transparent;
+      font-size: 14px;
+   }
+
+   [data-design="microsoft"] .group > .row,
+   [data-design="microsoft"] .group > .row-block,
+   [data-design="microsoft"] .group > a.row {
+      min-height: 3rem;
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      background: var(--card-fill);
+      box-shadow: 0 0 0 1px var(--card-stroke);
+      transition: background-color 0.083s linear;
+   }
+
+   [data-design="microsoft"] .row-divider {
+      display: none;
+   }
+
+   [data-design="microsoft"] .row-value,
+   [data-design="microsoft"] .hint {
+      color: var(--text-secondary);
+   }
+
+   [data-design="microsoft"] .row-action {
+      font-weight: 400;
+   }
+
+   @media (hover: hover) {
+      [data-design="microsoft"] .group > .row-action:hover,
+      [data-design="microsoft"] .group > .row-link:hover {
+         background: var(--control-fill-hover);
+      }
+   }
+
+   [data-design="microsoft"] .group > .row-action:active,
+   [data-design="microsoft"] .group > .row-link:active {
+      background: var(--subtle-pressed);
+   }
+
+   [data-design="microsoft"] .segmented {
+      padding: 2px;
+      gap: 2px;
+      border-radius: 6px;
+      background: var(--subtle-hover);
+      box-shadow: inset 0 0 0 1px var(--control-stroke);
+   }
+
+   [data-design="microsoft"] .segment {
+      height: 2rem;
+      padding: 0 0.5rem;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      transition: background-color 0.083s linear, color 0.083s linear;
+   }
+
+   @media (hover: hover) {
+      [data-design="microsoft"] .segment:hover {
+         background: var(--subtle-hover);
+         color: var(--color-base-content);
+      }
+   }
+
+   [data-design="microsoft"] .segment:has(input:checked) {
+      font-weight: 400;
+      color: var(--color-base-content);
+      background: var(--segment-selected);
+      box-shadow: 0 0 0 1px var(--control-stroke), 0 1px 0 var(--control-stroke-bottom);
+   }
+
+   [data-design="microsoft"] .segment::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 3px;
+      width: 0;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--color-primary);
+      translate: -50% 0;
+      transition: width 0.167s cubic-bezier(0, 0, 0, 1);
+   }
+
+   [data-design="microsoft"] .segment:has(input:checked)::after {
+      width: 16px;
+   }
+
+   [data-design="microsoft"] .segment:has(input:checked) .segment-check {
+      display: none;
+   }
+
+   [data-design="microsoft"] .tick-range {
+      --track-height: 4px;
+      --thumb-width: 20px;
+      --thumb-height: 20px;
+      --track-empty: var(--strong-stroke);
+      --dot: 6px;
+      height: 32px;
+   }
+
+   [data-design="microsoft"] .tick-range::-webkit-slider-runnable-track {
+      border-radius: 2px;
+      box-shadow: none;
+   }
+
+   [data-design="microsoft"] .tick-range::-moz-range-track {
+      border-radius: 2px;
+      box-shadow: none;
+   }
+
+   [data-design="microsoft"] .tick-range::-moz-range-progress {
+      border-radius: 2px;
+   }
+
+   [data-design="microsoft"] .tick-range::-webkit-slider-thumb {
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--color-primary) 0 var(--dot), var(--thumb-fill) calc(var(--dot) + 0.5px));
+      box-shadow: 0 0 0 1px var(--control-stroke), 0 1px 2px rgb(0 0 0 / 0.14);
+      transform: none;
+      transition: --dot 0.167s cubic-bezier(0, 0, 0, 1);
+   }
+
+   [data-design="microsoft"] .tick-range::-moz-range-thumb {
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--color-primary) 0 var(--dot), var(--thumb-fill) calc(var(--dot) + 0.5px));
+      box-shadow: 0 0 0 1px var(--control-stroke), 0 1px 2px rgb(0 0 0 / 0.14);
+      transform: none;
+      transition: --dot 0.167s cubic-bezier(0, 0, 0, 1);
+   }
+
+   @media (hover: hover) {
+      [data-design="microsoft"] .tick-range:hover {
+         --dot: 7px;
+      }
+   }
+
+   [data-design="microsoft"] .tick-range:active {
+      --dot: 5px;
+   }
+
+   [data-design="microsoft"] .tick-range:active::-webkit-slider-thumb {
+      transform: none;
+      background: radial-gradient(circle, var(--color-primary) 0 var(--dot), var(--thumb-fill) calc(var(--dot) + 0.5px));
+      box-shadow: 0 0 0 1px var(--control-stroke), 0 1px 2px rgb(0 0 0 / 0.14);
+   }
+
+   [data-design="microsoft"] .tick-range:active::-moz-range-thumb {
+      transform: none;
+      background: radial-gradient(circle, var(--color-primary) 0 var(--dot), var(--thumb-fill) calc(var(--dot) + 0.5px));
+   }
+
+   [data-design="microsoft"] .tick-range:focus-visible::-webkit-slider-thumb {
+      outline: 2px solid var(--color-base-content);
+      outline-offset: 1px;
+   }
+
+   [data-design="microsoft"] #settings-drawer ~ .drawer-side > .drawer-overlay {
+      background-color: rgb(0 0 0 / 0.3);
+      transition: opacity 0.367s cubic-bezier(0, 0, 0, 1);
+   }
+
+   [data-design="microsoft"] #settings-drawer ~ .drawer-side > #settings-panel,
+   [data-design="microsoft"] #settings-drawer:checked ~ .drawer-side > #settings-panel {
+      transition: translate 0.367s cubic-bezier(0, 0, 0, 1);
    }
 }
