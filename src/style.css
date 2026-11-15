@@ -77,6 +77,8 @@
       background: linear-gradient(180deg, var(--color-base-content) 30%, color-mix(in oklab, var(--color-base-content) 55%, transparent));
       -webkit-background-clip: text;
       background-clip: text;
+      padding: 0.1em 0.08em;
+      margin: -0.1em -0.08em;
       color: transparent;
    }
 }
